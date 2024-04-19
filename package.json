@@ -1,6 +1,6 @@
 {
   "name": "@hankliu/rc-exception",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "description": "React easy to use exception component",
   "keywords": [
@@ -9,37 +9,37 @@
     "react-exception",
     "exception"
   ],
-  "main": "./lib/index",
-  "module": "./es/index",
-  "types": "./lib/index.d.ts",
-  "files": [
-    "es",
-    "lib"
-  ],
   "homepage": "https://github.com/hankliu62/rc-exception",
+  "bugs": {
+    "url": "http://github.com/hankliu62/rc-exception/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://git@github.com/hankliu62/rc-exception.git"
   },
-  "bugs": {
-    "url": "http://github.com/hankliu62/rc-exception/issues"
-  },
   "license": "MIT",
+  "main": "./lib/index",
+  "module": "./es/index",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "assets/*.css",
+    "es",
+    "lib"
+  ],
   "scripts": {
-    "start": "dumi dev",
+    "compile": "father build && lessc assets/index.less assets/index.css",
+    "coverage": "rc-test -u --coverage",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "compile": "father build && lessc assets/index.less assets/index.css",
-    "prepublishOnlyNot": "npm run compile && np patch --yolo --no-publish --any-branch",
     "lint": "eslint src/ --ext .ts,.tsx,.jsx,.js,.md",
+    "now-build": "npm run docs:build",
+    "prepublishOnlyNot": "npm run compile && np patch --yolo --no-publish --any-branch",
     "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "test": "rc-test -u",
-    "coverage": "rc-test -u --coverage",
-    "now-build": "npm run docs:build"
+    "start": "dumi dev",
+    "test": "rc-test -u"
   },
-  "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
+  "resolutions": {
+    "styled-components": "^5"
   },
   "dependencies": {
     "@babel/runtime": "^7.24.4",
@@ -69,7 +69,8 @@
     "react-dom": "^18.2.0",
     "typescript": "^5.4.5"
   },
-  "resolutions": {
-    "styled-components": "^5"
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   }
 }
